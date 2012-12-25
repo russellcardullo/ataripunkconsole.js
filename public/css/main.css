@@ -1,0 +1,17 @@
+canvas {
+  border: 1px solid #BBB;
+}
+
+.xyinput {
+  padding-left: 270px;
+  text-align: center;
+}
+
+.controls {
+  padding-top: 20px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}

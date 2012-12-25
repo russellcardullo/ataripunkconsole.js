@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>AtariPunkConsole.js</title>
+    <!-- Production -->
+    <!--
+    <script src="../../src/audiolet/Audiolet.min.js"></script>
+    -->
+
+    <!-- Development -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+    <script src='js/lib/Audiolet.min.js'></script>
+    <script src='js/lib/jquery.kontrol.js'></script>
+
+    <!-- Common -->
+    <script src='js/fivefivefive.js'></script>
+    <script src='js/keyboard.js'></script>
+    <script src='js/slider.js'></script>
+    <script src='js/audiolet_app.js'></script>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" media='screen' />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Inconsolata' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <h1>AtariPunkConsole.js</h1>
+      <p>Adjust values for R1 and R3 to hear different notes</p>
+      <div class='row'>
+        <div class='span12 xyinput'>
+          <fieldset class='pad' data-width='400' data-height='400'>
+            <legend>XY Pad</legend>
+            R1 : <input name='x' id='r1' value=20000>
+            R3 : <input name='y' id='r3' value=20000>
+          </fieldset>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='span12 controls'>
+          <button class='btn btn-small' type='button' onclick="AudioletApp.start(parseFloat($('#r1').val()),parseFloat($('#r3').val()))">Start</button>
+          <button class='btn btn-small' type='button' onclick="AudioletApp.stop()">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        Powered by <a href='http://oampo.github.com/Audiolet/' target='_blank'>Audiolet</a>
+        | Controls by <a href='https://github.com/aterrien/jQuery-Kontrol/' target='_blank'>jQuery-Kontrol</a>
+    </footer>
+  </body>
+</html>

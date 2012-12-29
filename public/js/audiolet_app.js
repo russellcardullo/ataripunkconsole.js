@@ -3,9 +3,7 @@ var AudioletApp = new function() {
     var punkConsole = new AtariPunkConsole(audiolet, 20000, 20000);
     var connected = false;
 
-    this.start = function(r1, r3) {
-        punkConsole.changeR1(r1);
-        punkConsole.changeR3(r3);
+    this.start = function() {
         if (! connected) {
             punkConsole.connect(audiolet.output);
             connected = true;

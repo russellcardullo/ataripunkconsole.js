@@ -54,6 +54,11 @@ var AtariPunkConsole = function(audiolet, r1, r3) {
     this.phase = 0.0;
     this.timer = new Astable(this.r1);
     this.trigger = new Monostable(this.r3);
+    this.sampleBuffer = new Array();
+    var numSamples = 1024;
+    for (var i = 0; i < numSamples; i++) {
+        this.sampleBuffer.push(0.0);
+    }
 };
 
 extend(AtariPunkConsole, AudioletNode);
@@ -66,9 +71,18 @@ AtariPunkConsole.prototype.generate = function() {
         this.trigger.setTrigger(this.phase);
     }
     output.samples[0] = this.trigger.output(this.phase);
-   
     this.phase += (1.0 / sampleRate);
-    
+
+    // for visualization only
+    this.sampleBuffer.push(output.samples[0]);
+    this.sampleBuffer.shift();
+};
+
+AtariPunkConsole.prototype.clearBuffer = function() {
+    for (var i = 0; i < this.sampleBuffer.length; i++) {
+        this.sampleBuffer[i] = 0.0;
+    }
+    this.outputs[0].samples[0] = 0;
 };
 
 AtariPunkConsole.prototype.changeR1 = function(r1) {

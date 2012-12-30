@@ -11,6 +11,7 @@ var AudioletApp = new function() {
     };
 
     this.stop = function() {
+        punkConsole.clearBuffer();
         punkConsole.disconnect(audiolet.output);
         connected = false;
     };
@@ -22,4 +23,8 @@ var AudioletApp = new function() {
     this.setR3 = function(r3) {
         punkConsole.changeR3(r3);
     };
+
+    this.sampleBuffer = function() {
+        return punkConsole.sampleBuffer;
+    }
 };

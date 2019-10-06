@@ -7,10 +7,12 @@ var AudioletApp = new function() {
         if (! connected) {
             punkConsole.connect(audiolet.output);
             connected = true;
+            audiolet.device.sink._context.resume();
         }
     };
 
     this.stop = function() {
+        audiolet.device.sink._context.suspend();
         punkConsole.clearBuffer();
         punkConsole.disconnect(audiolet.output);
         connected = false;
